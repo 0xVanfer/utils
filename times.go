@@ -12,7 +12,9 @@ func TimestampNow() int {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetTimeRangeByType(t string, location string) (start int64, end int64) {
 	switch t {
@@ -40,7 +42,9 @@ func GetTimeRangeByType(t string, location string) (start int64, end int64) {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func TimeFormat(timestamp int64, location string) string {
 	locationTime, _ := time.LoadLocation(location)
@@ -51,7 +55,9 @@ func TimeFormat(timestamp int64, location string) string {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func TimeFormatTime(timestamp int64, location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
@@ -65,7 +71,9 @@ func TimeNowString() string {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetTodayStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
@@ -76,7 +84,9 @@ func GetTodayStart(location string) time.Time {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetWeekStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
@@ -87,7 +97,9 @@ func GetWeekStart(location string) time.Time {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetMonthStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
@@ -98,7 +110,9 @@ func GetMonthStart(location string) time.Time {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetYearStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
@@ -109,7 +123,9 @@ func GetYearStart(location string) time.Time {
 }
 
 // If location is "" or "UTC", use UTC time.
+//
 // If location is "Local", use local time.
+//
 // Location can also be "America/New_York", "Asia/Shanghai", etc.
 func GetTimeByStr(str string, location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)

@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// find all string between "strBefore" and "strAfter"
+// Find all string between "strBefore" and "strAfter".
 func FindStringBetween(fullStr string, strBefore string, strAfter string) (target []string) {
 	strLeft := fullStr
 	for {
@@ -24,7 +24,7 @@ func FindStringBetween(fullStr string, strBefore string, strAfter string) (targe
 	}
 }
 
-// find all []byte between "bytesBefore" and "bytesAfter"
+// Find all []byte between "bytesBefore" and "bytesAfter".
 func FindBytesBetween(fullBytes []byte, bytesBefore []byte, bytesAfter []byte) (target [][]byte) {
 	bytesLeft := fullBytes
 	for {

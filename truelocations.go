@@ -9,6 +9,7 @@ import (
 )
 
 // Consider a map: map[loc]=bool.
+//
 // Convert the coded string into locations.
 func StringToTrueLocations(str string) []int64 {
 	// string to big int
@@ -33,6 +34,7 @@ func StringToTrueLocations(str string) []int64 {
 }
 
 // Consider a map: map[loc]=bool.
+//
 // Use a bigInt to locate all true locations and convert into string.
 func TrueLocationsToString(trueLocs []int64) string {
 	// should not repeat
