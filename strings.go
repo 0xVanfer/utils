@@ -2,20 +2,21 @@ package utils
 
 import "strings"
 
-func RemoveFromString(targetStr string, targetRem string) string {
-	strLeft := targetStr
+// Remove the first subStr in str.
+func RemoveFromString(str string, subStr string) string {
+	strLeft := str
 	for {
-		if !strings.Contains(strLeft, targetRem) {
+		if !strings.Contains(strLeft, subStr) {
 			return strLeft
 		}
-		i := strings.Index(strLeft, targetRem)
-		strLeft = strLeft[:i] + strLeft[i+len(targetRem):]
+		i := strings.Index(strLeft, subStr)
+		strLeft = strLeft[:i] + strLeft[i+len(subStr):]
 	}
 }
 
-func ContainAnyOfStrs(longStr string, targets []string) bool {
-	for _, containStr := range targets {
-		if strings.Contains(longStr, containStr) {
+func ContainAnyOfStrs(str string, subStrs []string) bool {
+	for _, subStr := range subStrs {
+		if strings.Contains(str, subStr) {
 			return true
 		}
 	}
