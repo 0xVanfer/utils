@@ -41,8 +41,9 @@ func SeperateIntoArray(targetStr string, seperateBy string) (res []string) {
 	}
 }
 
-func ContainInArray[T comparable](target T, targetArray []T) bool {
-	for _, t := range targetArray {
+// If target contains in array.
+func ContainInArray[T comparable](target T, array []T) bool {
+	for _, t := range array {
 		if target == t {
 			return true
 		}
@@ -50,10 +51,21 @@ func ContainInArray[T comparable](target T, targetArray []T) bool {
 	return false
 }
 
-func RemoveRepetitionInArray[T comparable](targetArray []T) []T {
-	newArray := make([]T, 0, len(targetArray))
+// If target contains in string array, ignore lower or upper.
+func ContainInArrayX(target string, array []string) bool {
+	for _, t := range array {
+		if strings.EqualFold(target, t) {
+			return true
+		}
+	}
+	return false
+}
+
+// Remove repetiton in an array and return the new one.
+func RemoveRepetitionInArray[T comparable](array []T) []T {
+	newArray := make([]T, 0, len(array))
 	tempMap := make(map[T]int)
-	for _, t := range targetArray {
+	for _, t := range array {
 		l := len(tempMap)
 		tempMap[t] = 0
 		if len(tempMap) != l {
@@ -63,10 +75,11 @@ func RemoveRepetitionInArray[T comparable](targetArray []T) []T {
 	return newArray
 }
 
-func RemoveFromArray[T comparable](targetArray []T, targetRem T) []T {
-	newArray := make([]T, 0, len(targetArray))
-	for _, t := range targetArray {
-		if t == targetRem {
+// Remove sth from an array and return the new one.
+func RemoveFromArray[T comparable](array []T, toRemove T) []T {
+	newArray := make([]T, 0, len(array))
+	for _, t := range array {
+		if t == toRemove {
 			continue
 		}
 		newArray = append(newArray, t)

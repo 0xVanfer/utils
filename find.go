@@ -6,6 +6,8 @@ import (
 )
 
 // Find all string between "strBefore" and "strAfter".
+//
+// Used to seperate a long string into ideal array.
 func FindStringBetween(fullStr string, strBefore string, strAfter string) (target []string) {
 	strLeft := fullStr
 	for {
@@ -25,6 +27,8 @@ func FindStringBetween(fullStr string, strBefore string, strAfter string) (targe
 }
 
 // Find all []byte between "bytesBefore" and "bytesAfter".
+//
+// Used to seperate a long []byte into ideal array.
 func FindBytesBetween(fullBytes []byte, bytesBefore []byte, bytesAfter []byte) (target [][]byte) {
 	bytesLeft := fullBytes
 	for {
