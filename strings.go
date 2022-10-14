@@ -56,11 +56,18 @@ func StrUnderline2SeperateTitle(str string) string {
 	return cases.Title(language.Und).String(StrUnderline2Seperate(str))
 }
 
-// Return camel case of str.
+// Return camel case of str. The first letter is upper case.
+//
+// Warning: Using both StrUnderline2Camel and StrCamel2Underline(regardless of order) will probably not get the original string!
+func StrUnderline2CamelUpperFirst(str string) string {
+	return strings.Replace(StrUnderline2SeperateTitle(str), " ", "", -1)
+}
+
+// Return camel case of str. The first letter is lower case.
 //
 // Warning: Using both StrUnderline2Camel and StrCamel2Underline(regardless of order) will probably not get the original string!
 func StrUnderline2Camel(str string) string {
-	return LowerFirst(strings.Replace(StrUnderline2SeperateTitle(str), " ", "", -1))
+	return LowerFirst(StrUnderline2CamelUpperFirst(str))
 }
 
 // Return underline case of str.
