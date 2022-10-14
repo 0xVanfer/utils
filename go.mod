@@ -7,6 +7,7 @@ require (
 	github.com/ethereum/go-ethereum v1.10.25
 	github.com/imroc/req v0.3.2
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
+	golang.org/x/text v0.3.7
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
 

@@ -27,8 +27,8 @@ func ConnectArray(strList []string, connector string) string {
 }
 
 // Seperate a string into an array, the seperater will be deleted.
-func SeperateIntoArray(targetStr string, seperateBy string) (res []string) {
-	strLeft := targetStr
+func SeperateIntoArray(str string, seperateBy string) (res []string) {
+	strLeft := str
 	for {
 		if !strings.Contains(strLeft, seperateBy) {
 			res = append(res, strLeft)
