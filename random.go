@@ -5,18 +5,20 @@ import (
 	"math/big"
 	math_rand "math/rand"
 	"time"
+
+	"github.com/0xVanfer/types"
 )
 
 // Random from timestamp.
-func MathRandBelow(length int) int {
+func MathRandBelow[T types.Integer](length T) int {
 	s := math_rand.NewSource(time.Now().Unix())
 	r := math_rand.New(s)
-	i := r.Intn(length)
+	i := r.Intn(int(length))
 	return i
 }
 
 // Real random/ Crypto random.
-func CryptoRandBelow(length int) int {
+func CryptoRandBelow[T types.Integer](length T) int {
 	n, _ := crypto_rand.Int(crypto_rand.Reader, big.NewInt(int64(length)))
 	return int(n.Int64())
 }
