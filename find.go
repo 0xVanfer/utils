@@ -8,6 +8,11 @@ import (
 // Find all string between "strBefore" and "strAfter".
 //
 // Used to seperate a long string into ideal array.
+//
+// Example:
+//
+//	FindStringBetween("aaaaaa", "a", "a") = []string{"", "", ""}
+//	FindStringBetween("abcabc", "a", "c") = []string{"b", "b"}
 func FindStringBetween(fullStr string, strBefore string, strAfter string) (target []string) {
 	strLeft := fullStr
 	for {

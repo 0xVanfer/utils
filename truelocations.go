@@ -11,6 +11,10 @@ import (
 // Consider a map: map[loc]=bool.
 //
 // Convert the coded string into locations.
+//
+// Example:
+//
+//	StringToTrueLocations("1432351")  = []int64{0, 1, 2, 3, 4, 8, 9, 11, 12, 14, 15, 16, 18, 20}
 func StringToTrueLocations(str string) []int64 {
 	// string to big int
 	x := big.NewInt(0)
@@ -36,6 +40,10 @@ func StringToTrueLocations(str string) []int64 {
 // Consider a map: map[loc]=bool.
 //
 // Use a bigInt to locate all true locations and convert into string.
+//
+// Example:
+//
+//	TrueLocationsToString([]int64{1, 2, 333, 999}) = "17498005798264095394980017816940970922825355447145699491406164851279623993595007385788105416184430598"
 func TrueLocationsToString(trueLocs []int64) string {
 	// should not repeat
 	newLocs := RemoveRepetitionInArray(trueLocs)

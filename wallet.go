@@ -27,6 +27,20 @@ func CreateKey() (privateKey string, address string) {
 	return
 }
 
+// From private key to address.
+func Private2Address(key string) string {
+	private, err := crypto.HexToECDSA(key)
+	if err != nil {
+		return ""
+	}
+	publicKey := private.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		return ""
+	}
+	return crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
+}
+
 // Return checksummed ethereum address.
 func ChecksumEthereumAddress(addr string) string {
 	hex := strings.ToLower(addr)[2:]
