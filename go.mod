@@ -3,7 +3,7 @@ module github.com/0xVanfer/utils
 go 1.19
 
 require (
-	github.com/0xVanfer/types v0.1.2
+	github.com/0xVanfer/types v0.1.3
 	github.com/ethereum/go-ethereum v1.10.25
 	github.com/imroc/req v0.3.2
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
