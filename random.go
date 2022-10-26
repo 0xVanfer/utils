@@ -51,7 +51,7 @@ func CryptoRandBelow[T types.Integer](length T) int {
 //
 //	1st. You will not get two same points in the array.
 //	2nd. You will receive exactly the same series of results
-//		if you call this function several times in a short period of time.
+//		 if you call this function several times in a short period of time.
 func CryptoRandBetween(start int, end int, times int) []int {
 	insert := start
 	var results randRes
