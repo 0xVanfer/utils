@@ -78,37 +78,43 @@ func StrUnderline2SeperateTitle(str string) string {
 
 // Return camel case of str. The first letter is upper case.
 //
-// Warning: Using both StrUnderline2Camel and StrCamel2Underline
-// (regardless of order) will probably not get the original string!
-//
 // Example:
 //
 //	StrUnderline2Camel("a_b_c") = "ABC"
+//
+// NOTE:
+//
+//	Using both `StrUnderline2Camel()` and `StrCamel2Underline()`
+//	(regardless of order) will probably not get the original string!
 func StrUnderline2CamelUpperFirst(str string) string {
 	return strings.Replace(StrUnderline2SeperateTitle(str), " ", "", -1)
 }
 
 // Return camel case of str. The first letter is lower case.
 //
-// Warning: Using both StrUnderline2Camel and StrCamel2Underline
-// (regardless of order) will probably not get the original string!
-//
 // Example:
 //
 //	StrUnderline2Camel("a_b_c") = "aBC"
+//
+// NOTE:
+//
+//	Using both `StrUnderline2Camel()` and `StrCamel2Underline()`
+//	(regardless of order) will probably not get the original string!
 func StrUnderline2Camel(str string) string {
 	return LowerFirst(StrUnderline2CamelUpperFirst(str))
 }
 
 // Return underline case of str.
 //
-// Warning: Using both StrUnderline2Camel and StrCamel2Underline
-// (regardless of order) will probably not get the original string!
-//
 // Example:
 //
 //	StrUnderline2Camel("aBC") = "a_b_c"
 //	StrUnderline2Camel("ABC") = "a_b_c"
+//
+// NOTE:
+//
+//	Using both `StrUnderline2Camel()` and `StrCamel2Underline()`
+//	(regardless of order) will probably not get the original string!
 func StrCamel2Underline(str string) string {
 	var result bytes.Buffer
 	for i, r := range str {

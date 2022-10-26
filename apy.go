@@ -6,19 +6,27 @@ import (
 	"github.com/0xVanfer/types"
 )
 
+// Calculate the apy by given apr.
 // Compound times = 365.
 //
 // Example:
 //
 //	Apr2Apy(0.1) = 0.10515578161622718 // 10%  ==> 10.52%
 //	Apr2Apy(1)   = 1.7145674820220145  // 100% ==> 171.46%
-func Apr2Apy(apr any) (apy float64) {
+//
+// NOTE:
+//
+//	decimal.Decimal method `Pow()` can not use float number as the input parameter,
+//	and therefore using decimal.Decimal is meaningless here.
+func Apr2Apy(apr any) float64 {
 	if !types.IsNumber(apr) {
 		return 0
 	}
 	return math.Pow((1+types.ToFloat64(apr)/365), 365) - 1
 }
 
+// Calculate the apy by given apr.
+//
 // Example:
 //
 //	Apr2ApyWithCompoundTimes(0.1, 100) = 0.10511569772075302 // 10%  ==> 10.51%
@@ -27,20 +35,21 @@ func Apr2ApyWithCompoundTimes[T types.Number](apr any, compoundTimes T) float64 
 	return math.Pow((1+types.ToFloat64(apr)/types.ToFloat64(compoundTimes)), types.ToFloat64(compoundTimes)) - 1
 }
 
+// Calculate the apr by given apy.
 // Compound times = 365.
 //
 // Example:
 //
 //	Apy2Apr(0.1) = 0.09532262476476205 // 10%  ==> 9.53%
 //	Apy2Apr(1)   = 0.693805752190747   // 100% ==> 69.38%
-func Apy2Apr(apy any) (apr float64) {
-	if !types.IsNumber(apr) {
+func Apy2Apr(apy any) float64 {
+	if !types.IsNumber(apy) {
 		return 0
 	}
 	return (math.Pow(1+types.ToFloat64(apy), 1.0/365) - 1) * 365
 }
 
-// Compound times = 365.
+// Calculate the apr by given apy.
 //
 // Example:
 //
