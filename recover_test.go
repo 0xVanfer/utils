@@ -6,6 +6,6 @@ import (
 )
 
 func TestRestart(t *testing.T) {
-	defer Restart(func() { fmt.Println("test in") }, "")
+	defer Restart(func() { fmt.Println("test in") })
 	panic("err")
 }

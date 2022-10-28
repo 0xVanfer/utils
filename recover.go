@@ -7,11 +7,7 @@ import (
 )
 
 // Recover from panic and restart.
-//
-// NOTE:
-//
-//	Param `functionName` is no longer in use. It will be read directly from runtime.
-func Restart(functionToRecover func(), functionName string) {
+func Restart(funcToRecover func()) {
 	if r := recover(); r != nil {
 		// Get the running function.
 		pc := make([]uintptr, 2)
@@ -21,16 +17,12 @@ func Restart(functionToRecover func(), functionName string) {
 		fmt.Println(TimeNowString(), f.Name(), "recovered from panic, will restart.")
 		// At least sleep for 1 sec, in case of endless loop.
 		time.Sleep(time.Second)
-		functionToRecover()
+		funcToRecover()
 	}
 }
 
 // Recover from panic and restart after waiting for a while.
-//
-// NOTE:
-//
-//	Param `functionName` is no longer in use. It will be read directly from runtime.
-func RestartAndSleep(functionToRecover func(), functionName string, sleepTime time.Duration) {
+func RestartAndSleep(funcToRecover func(), sleepTime time.Duration) {
 	if r := recover(); r != nil {
 		// Get the running function.
 		pc := make([]uintptr, 2)
@@ -42,6 +34,6 @@ func RestartAndSleep(functionToRecover func(), functionName string, sleepTime ti
 			sleepTime = time.Second
 		}
 		time.Sleep(sleepTime)
-		functionToRecover()
+		funcToRecover()
 	}
 }
