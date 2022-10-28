@@ -8,10 +8,7 @@ import "github.com/0xVanfer/types"
 //
 //	Min(1, 2, 3) = 1
 //	Min[int]()   = 0
-//
-// NOTE:
-//
-//	Can not use array as input param.
+//	Min([]int{2, 3, 4}...) = 2
 func Min[T types.OrderedNumber](numbers ...T) T {
 	if len(numbers) == 0 {
 		return 0
@@ -34,10 +31,7 @@ func Min[T types.OrderedNumber](numbers ...T) T {
 //
 //	Max(1, 2, 3) = 3
 //	Max[int]()   = 0
-//
-// NOTE:
-//
-//	Can not use array as input param.
+//	Max([]int{2, 3, 4}...) = 4
 func Max[T types.OrderedNumber](numbers ...T) T {
 	if len(numbers) == 0 {
 		return 0
