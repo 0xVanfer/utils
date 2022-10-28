@@ -44,7 +44,7 @@ func StringToTrueLocations(str string) []int64 {
 //
 // Example:
 //
-//	TrueLocationsToString([]int64{1, 2, 333, 999}) =
+//	TrueLocationsToString([]int64{1, 2, 333}) =
 //	"17498005798264095394980017816940970922825355447145699491406164851279623993595007385788105416184430598"
 func TrueLocationsToString(trueLocs []int64) string {
 	// should not repeat
