@@ -84,8 +84,8 @@ func FindAddressContain(times int, targets ...string) []findAddr {
 			found = append(found, findAddr{Private: priv, Address: addr})
 		}
 		tried += 1
-		if tried > 1000000 {
-			fmt.Println("already tried a million times, the target maybe too long")
+		if tried > 10000000 {
+			fmt.Println("already tried 10 million times, the target maybe too long")
 			return found
 		}
 	}
@@ -112,8 +112,8 @@ func FindAddressStart(times int, targets ...string) []findAddr {
 			}
 		}
 		tried += 1
-		if tried > 1000000 {
-			fmt.Println("already tried a million times, the target maybe too long")
+		if tried > 10000000 {
+			fmt.Println("already tried 10 million times, the target maybe too long")
 			return found
 		}
 	}
@@ -140,8 +140,8 @@ func FindAddressEnd(times int, targets ...string) []findAddr {
 			}
 		}
 		tried += 1
-		if tried > 1000000 {
-			fmt.Println("already tried a million times, the target maybe too long")
+		if tried > 10000000 {
+			fmt.Println("already tried 10 million times, the target maybe too long")
 			return found
 		}
 	}
