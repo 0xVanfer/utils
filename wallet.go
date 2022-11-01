@@ -2,7 +2,9 @@ package utils
 
 import (
 	"crypto/ecdsa"
+	"fmt"
 	"log"
+	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
@@ -58,4 +60,90 @@ func ChecksumEthereumAddress(addr string) string {
 		checksumed += c
 	}
 	return checksumed
+}
+
+type findAddr struct {
+	Private string
+	Address string
+}
+
+// Find an address contain the target string.
+func FindAddressContain(times int, targets ...string) []findAddr {
+	for _, target := range targets {
+		_, err := strconv.ParseInt(target, 16, 64)
+		// not hex
+		if err != nil {
+			return nil
+		}
+	}
+	var found []findAddr
+	var tried int = 0
+	for len(found) < times {
+		priv, addr := CreateKey()
+		if ContainAnyOfStrs(addr, targets) {
+			found = append(found, findAddr{Private: priv, Address: addr})
+		}
+		tried += 1
+		if tried > 1000000 {
+			fmt.Println("already tried a million times, the target maybe too long")
+			return found
+		}
+	}
+	return found
+}
+
+// Find an address start with the target string.
+func FindAddressStart(times int, targets ...string) []findAddr {
+	for _, target := range targets {
+		_, err := strconv.ParseInt(target, 16, 64)
+		// not hex
+		if err != nil {
+			return nil
+		}
+	}
+	var found []findAddr
+	var tried int = 0
+	for len(found) < times {
+		priv, addr := CreateKey()
+		for _, target := range targets {
+			if strings.EqualFold(target, addr[2:len(target)+2]) {
+				found = append(found, findAddr{Private: priv, Address: addr})
+				continue
+			}
+		}
+		tried += 1
+		if tried > 1000000 {
+			fmt.Println("already tried a million times, the target maybe too long")
+			return found
+		}
+	}
+	return found
+}
+
+// Find an address end with the target string.
+func FindAddressEnd(times int, targets ...string) []findAddr {
+	for _, target := range targets {
+		_, err := strconv.ParseInt(target, 16, 64)
+		// not hex
+		if err != nil {
+			return nil
+		}
+	}
+	var found []findAddr
+	var tried int = 0
+	for len(found) < times {
+		priv, addr := CreateKey()
+		for _, target := range targets {
+			if strings.EqualFold(target, addr[42-len(target):]) {
+				found = append(found, findAddr{Private: priv, Address: addr})
+				continue
+			}
+		}
+		tried += 1
+		if tried > 1000000 {
+			fmt.Println("already tried a million times, the target maybe too long")
+			return found
+		}
+	}
+	return found
 }
