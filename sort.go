@@ -13,13 +13,13 @@ import (
 func SortSimple[T types.Ordered](ascending bool, input []T) []T {
 	length := len(input)
 	if length == 0 {
-		return input
-	}
-	if length > 20 {
-		fmt.Println("Input too long, sort.Sort() suggested.")
+		return []T{}
 	}
 	if length > 100 {
-		return input
+		fmt.Println("Input too long, sort.Sort() suggested.")
+	}
+	if length > 1000 {
+		return []T{}
 	}
 	// sort.insertionSort
 	for i := 1; i < length; i++ {
@@ -49,10 +49,10 @@ func SortSimpleMap[S comparable, T types.Ordered](ascending bool, input map[S]T)
 	if length == 0 {
 		return nil, nil
 	}
-	if length > 20 {
+	if length > 100 {
 		fmt.Println("Input too long, sort.Sort() suggested.")
 	}
-	if length > 100 {
+	if length > 1000 {
 		return nil, nil
 	}
 

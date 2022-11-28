@@ -51,6 +51,9 @@ func Max[T types.OrderedNumber](numbers ...T) T {
 // Get the medium number.
 func Medium[T types.OrderedNumber](numbers ...T) float64 {
 	numbers = SortSimple(true, numbers)
+	if len(numbers) == 0 {
+		return 0
+	}
 	if len(numbers)%2 == 1 {
 		return types.ToFloat64(numbers[len(numbers)/2])
 	} else {
@@ -72,6 +75,9 @@ func Mode[T types.OrderedNumber](numbers ...T) []T {
 		}
 	}
 	numberList, timesList := SortSimpleMap(false, mapp)
+	if len(timesList) == 0 {
+		return []T{}
+	}
 	maxTime := timesList[0]
 	var res []T
 	for i := range numberList {
