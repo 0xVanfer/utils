@@ -4,7 +4,6 @@ import (
 	crypto_rand "crypto/rand"
 	"math/big"
 	math_rand "math/rand"
-	"sort"
 	"time"
 
 	"github.com/0xVanfer/types"
@@ -39,7 +38,7 @@ func CryptoRandBelow[T types.Integer](length T) int {
 //	CryptoRandBetween(1, 100, 5) = []int{1, 68, 69, 78, 79, 98, 100}
 func CryptoRandBetween(start int, end int, times int) []int {
 	insert := start
-	var results randRes
+	var results []int
 	results = append(results, insert)
 	for i := 0; i < times; i++ {
 		new := CryptoRandBelow(end-start) + start
@@ -49,7 +48,7 @@ func CryptoRandBetween(start int, end int, times int) []int {
 		results = append(results, new)
 	}
 	results = append(results, end)
-	sort.Sort(results)
+	results = SortSimple(true, results)
 	return results
 }
 
@@ -57,13 +56,3 @@ func CryptoRandBetween(start int, end int, times int) []int {
 func CryptoRandFrom[T any](range_ []T) T {
 	return range_[CryptoRandBelow(len(range_))]
 }
-
-type randRes []int
-
-func (p randRes) Len() int { return len(p) }
-
-func (p randRes) Less(i, j int) bool {
-	return p[i] < p[j]
-}
-
-func (p randRes) Swap(i, j int) { p[i], p[j] = p[j], p[i] }

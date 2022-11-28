@@ -12,4 +12,8 @@ func TestCryptoRandFrom(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		fmt.Println(CryptoRandFrom(range_))
 	}
+
+	for i := 0; i < 10; i++ {
+		fmt.Println(CryptoRandBetween(0, 100, 5))
+	}
 }
