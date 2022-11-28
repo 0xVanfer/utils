@@ -27,3 +27,24 @@ func ExampleMax() {
 	// 5
 	// 4
 }
+
+func ExampleMedium() {
+	list := []int{1, 2, 5, 4, 3}
+	fmt.Println(Medium(list...))
+
+	list = []int{1, 2, 5, 4, 3, 2}
+	fmt.Println(Medium(list...))
+	// Output:
+	// 3
+	// 2.5
+}
+
+func ExampleMode() {
+	list := []int{1, 2, 5, 4, 3, 2}
+	fmt.Println(Mode(list...))
+	list = []int{1, 2, 5, 4, 3, 2, 3, 4}
+	fmt.Println(Mode(list...))
+	// Output:
+	// [2]
+	// [2 3 4]
+}

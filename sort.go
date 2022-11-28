@@ -37,3 +37,41 @@ func SortSimple[T types.Ordered](ascending bool, input []T) []T {
 	}
 	return input
 }
+
+func SortSimpleMap[S comparable, T types.Ordered](ascending bool, input map[S]T) ([]S, []T) {
+	length := len(input)
+	if length == 0 {
+		return nil, nil
+	}
+	if length > 20 {
+		fmt.Println("Input too long, sort.Sort() suggested.")
+	}
+	if length > 100 {
+		return nil, nil
+	}
+
+	var xList []S
+	var yList []T
+	for x, y := range input {
+		xList = append(xList, x)
+		yList = append(yList, y)
+	}
+
+	// sort.insertionSort
+	for i := 1; i < length; i++ {
+		if ascending {
+			// Ascending.
+			for j := i; j > 0 && yList[j] < yList[j-1]; j-- {
+				yList[j-1], yList[j] = yList[j], yList[j-1]
+				xList[j-1], xList[j] = xList[j], xList[j-1]
+			}
+		} else {
+			// Descending.
+			for j := i; j > 0 && yList[j] > yList[j-1]; j-- {
+				yList[j-1], yList[j] = yList[j], yList[j-1]
+				xList[j-1], xList[j] = xList[j], xList[j-1]
+			}
+		}
+	}
+	return xList, yList
+}

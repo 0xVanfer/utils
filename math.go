@@ -47,3 +47,35 @@ func Max[T types.OrderedNumber](numbers ...T) T {
 	}
 	return max
 }
+
+func Medium[T types.OrderedNumber](numbers ...T) float64 {
+	numbers = SortSimple(true, numbers)
+	if len(numbers)%2 == 1 {
+		return types.ToFloat64(numbers[len(numbers)/2])
+	} else {
+		return (types.ToFloat64(numbers[len(numbers)/2-1]) + types.ToFloat64(numbers[len(numbers)/2])) / 2
+	}
+}
+
+func Mode[T types.OrderedNumber](numbers ...T) []T {
+	if len(numbers) <= 1 {
+		return numbers
+	}
+	mapp := make(map[T]int64)
+	for _, num := range numbers {
+		if mapp[num] == 0 {
+			mapp[num] = 1
+		} else {
+			mapp[num] += 1
+		}
+	}
+	numberList, timesList := SortSimpleMap(false, mapp)
+	maxTime := timesList[0]
+	var res []T
+	for i := range numberList {
+		if timesList[i] == maxTime {
+			res = append(res, numberList[i])
+		}
+	}
+	return SortSimple(true, res)
+}
