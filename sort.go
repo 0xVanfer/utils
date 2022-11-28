@@ -6,7 +6,7 @@ import (
 	"github.com/0xVanfer/types"
 )
 
-// Simple sort. Don't need to define Len(), Less(), Swap().
+// Simple sort. Do not need to define Len(), Less(), Swap().
 //
 // Should not be used to sort too much amount of values.
 // If the length is over 12, sort.Sort() suggested.
@@ -38,6 +38,12 @@ func SortSimple[T types.Ordered](ascending bool, input []T) []T {
 	return input
 }
 
+// Simple sort by map value. Do not need to define Len(), Less(), Swap().
+//
+// Should not be used to sort too much amount of values.
+// If the length is over 12, sort.Sort() suggested.
+//
+// Returns the ordered keys and ordered values.
 func SortSimpleMap[S comparable, T types.Ordered](ascending bool, input map[S]T) ([]S, []T) {
 	length := len(input)
 	if length == 0 {

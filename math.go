@@ -48,6 +48,7 @@ func Max[T types.OrderedNumber](numbers ...T) T {
 	return max
 }
 
+// Get the medium number.
 func Medium[T types.OrderedNumber](numbers ...T) float64 {
 	numbers = SortSimple(true, numbers)
 	if len(numbers)%2 == 1 {
@@ -57,6 +58,7 @@ func Medium[T types.OrderedNumber](numbers ...T) float64 {
 	}
 }
 
+// Get the mode(math).
 func Mode[T types.OrderedNumber](numbers ...T) []T {
 	if len(numbers) <= 1 {
 		return numbers
