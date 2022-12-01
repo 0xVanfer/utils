@@ -34,6 +34,19 @@ func ContainAnyOfStrs(str string, subStrs []string) bool {
 	return false
 }
 
+// Example:
+//
+//	ContainAnyOfStrs("abracadabra", []string{"bra", "abr"}) = true
+//	ContainAnyOfStrs("abracadabra", []string{"bra", "tnt"}) = false
+func ContainAllOfStrs(str string, subStrs []string) bool {
+	for _, subStr := range subStrs {
+		if !strings.Contains(str, subStr) {
+			return false
+		}
+	}
+	return true
+}
+
 // The first letter to upper case.
 //
 // Example:
