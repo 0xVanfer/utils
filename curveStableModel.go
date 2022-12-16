@@ -7,8 +7,18 @@ import (
 	"github.com/0xVanfer/types"
 )
 
-// Curve stable token swap model.
-// Two tokens vesion.
+// Curve stable token swap model. Two tokens vesion.
+//
+// Example:
+//
+//	info := &utils.CurveStableModel{
+//		A:        1000,
+//		BalanceX: big.NewInt(1).Mul(big.NewInt(5000000), big.NewInt(1e18)),
+//		BalanceY: big.NewInt(1).Mul(big.NewInt(5000000), big.NewInt(1e18)),
+//		Dx:       big.NewInt(1).Mul(big.NewInt(-1000), big.NewInt(1e18)),
+//	}
+//	info.CalcDy()
+//	utils.PrettyJsonPrintln(info)
 type CurveStableModel struct {
 	// Input info.
 	A int64 // Amplification.

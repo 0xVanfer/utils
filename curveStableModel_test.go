@@ -1,17 +1,16 @@
 package utils
 
 import (
+	"math/big"
 	"testing"
-
-	"github.com/0xVanfer/types"
 )
 
 func TestCurveStableModel(t *testing.T) {
 	info := &CurveStableModel{
 		A:        1000,
-		BalanceX: types.ToBigInt(1).Mul(types.ToBigInt(5000000), types.ToBigInt(1e18)),
-		BalanceY: types.ToBigInt(1).Mul(types.ToBigInt(5000000), types.ToBigInt(1e18)),
-		Dx:       types.ToBigInt(1).Mul(types.ToBigInt(-1000), types.ToBigInt(1e18)),
+		BalanceX: big.NewInt(1).Mul(big.NewInt(5000000), big.NewInt(1e18)),
+		BalanceY: big.NewInt(1).Mul(big.NewInt(5000000), big.NewInt(1e18)),
+		Dx:       big.NewInt(1).Mul(big.NewInt(-1000), big.NewInt(1e18)),
 	}
 	info.CalcDy()
 	PrettyJsonPrintln(info)
