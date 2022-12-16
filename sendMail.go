@@ -21,6 +21,7 @@ type MailInfo struct {
 	Body      string
 }
 
+// Deprecated. Will use new structure later.
 func SendMail(sender MailSender, info MailInfo) error {
 	port, _ := strconv.Atoi(sender.Port)
 	m := gomail.NewMessage()
