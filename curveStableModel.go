@@ -2,7 +2,6 @@ package utils
 
 import (
 	"errors"
-	"fmt"
 	"math"
 	"math/big"
 
@@ -99,6 +98,11 @@ func (details *CurveStableCoinModel) regulatoryCheck() (err error) {
 		err = errors.New("Require: 0 <= Y_Num < N.")
 		return
 	}
+	if details.Dx == nil {
+		//lint:ignore ST1005 sentence error needed
+		err = errors.New("Require: Dx != 0.")
+		return
+	}
 	return
 }
 
@@ -153,10 +157,9 @@ func (details *CurveStableCoinModel) calcD() {
 }
 
 // Calculate everything.
-func (details *CurveStableCoinModel) CalcDy() {
-	err := details.regulatoryCheck()
+func (details *CurveStableCoinModel) CalcDy() (err error) {
+	err = details.regulatoryCheck()
 	if err != nil {
-		fmt.Println(err)
 		return
 	}
 	// Calculate the previous D.
@@ -212,4 +215,5 @@ func (details *CurveStableCoinModel) CalcDy() {
 			return
 		}
 	}
+	return
 }
