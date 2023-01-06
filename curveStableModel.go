@@ -39,14 +39,14 @@ type CurveStableCoinModel struct {
 	X_Num    int64      // The serial number of the token to be swaped. Related to `Balances`.
 	Y_Num    int64      // The serial number of the token to be swaped to. Related to `Balances`.
 
-	// Output info.
+	// The data for the convenience of calculation.
 	sum  *big.Int // Sum of all balances.
 	prod *big.Int // Production of all balances.
 	an   *big.Int // A * n
 	ann  *big.Int // A * n**n
-	D    *big.Int // Variable D of the pool.
 
 	// Output info.
+	D           *big.Int // Variable D of the pool.
 	ExpectedFee *big.Int // Expected fee to be charged.
 	ExpectedDy  *big.Int // Expected give out amount of token y.
 }

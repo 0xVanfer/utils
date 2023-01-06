@@ -10,6 +10,13 @@ import (
 //
 // Should not be used to sort too much amount of values.
 // If the length is over 12, sort.Sort() suggested.
+//
+// `ascending`: True: The result will be ascending.
+// False: The result will be descending.
+//
+// Example:
+//
+//	SortSimple(true, []int{1, 2, 5, 6, 3, 12}) = []int{1, 2, 3, 5, 6, 12}
 func SortSimple[T types.Ordered](ascending bool, input []T) []T {
 	length := len(input)
 	if length == 0 {
@@ -44,6 +51,18 @@ func SortSimple[T types.Ordered](ascending bool, input []T) []T {
 // If the length is over 12, sort.Sort() suggested.
 //
 // Returns the ordered keys and ordered values.
+//
+// Example:
+//
+//	mapp := map[string]int{
+//		"a": 1,
+//		"b": 3,
+//		"c": 4,
+//		"d": 2,
+//	}
+//	x, y := SortSimpleMap(true, mapp)
+//	x = []string{"a", "d", "b", "c"}
+//	y = []int{1, 2, 3, 4}
 func SortSimpleMap[S comparable, T types.Ordered](ascending bool, input map[S]T) ([]S, []T) {
 	length := len(input)
 	if length == 0 {

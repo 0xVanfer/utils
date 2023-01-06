@@ -6,9 +6,8 @@ import (
 )
 
 func TestSort(t *testing.T) {
-	list := []int{1, 2, 5, 6, 3, 2, 1, 1, 1, 1, 1, 1, 11, 12, 12, 12, 12, 2}
-	x := SortSimple(true, list)
-	fmt.Println(x)
+	// list := []int{1, 2, 5, 6, 3, 12}
+	fmt.Println(SortSimple(true, []int{1, 2, 5, 6, 3, 12}))
 }
 
 func TestSortMap(t *testing.T) {
@@ -18,7 +17,7 @@ func TestSortMap(t *testing.T) {
 		"c": 4,
 		"d": 2,
 	}
-	x, y := SortSimpleMap(true, mapp)
+	x, y := SortSimpleMap(false, mapp)
 	fmt.Println(x)
 	fmt.Println(y)
 }
