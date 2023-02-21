@@ -11,7 +11,7 @@ func ExampleStringToTrueLocations() {
 }
 
 func ExampleTrueLocationsToString() {
-	fmt.Println(TrueLocationsToString([]int64{1, 2, 33}))
+	fmt.Println(TrueLocationsToString([]int64{1, 2, 33}...))
 	// Output:
 	// 8589934598
 }

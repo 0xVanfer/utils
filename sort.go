@@ -17,7 +17,7 @@ import (
 // Example:
 //
 //	SortSimple(true, []int{1, 2, 5, 6, 3, 12}) = []int{1, 2, 3, 5, 6, 12}
-func SortSimple[T types.Ordered](ascending bool, input []T) []T {
+func SortSimple[T types.Ordered](ascending bool, input ...T) []T {
 	length := len(input)
 	if length == 0 {
 		return []T{}

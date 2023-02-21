@@ -7,6 +7,8 @@ import (
 
 // 2022.01.01 00:00:00  1640966400
 
+// TODO: Local and UTC not correct.
+
 // The timestamp now. In seconds.
 func TimestampNow() int {
 	return int(time.Now().Unix())

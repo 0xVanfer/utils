@@ -42,17 +42,17 @@ func CryptoRandBetween(start int, end int, times int) []int {
 	results = append(results, insert)
 	for i := 0; i < times; i++ {
 		new := CryptoRandBelow(end-start) + start
-		for ContainInArray(new, results) {
+		for ContainInArray(new, results...) {
 			new = CryptoRandBelow(end-start) + start
 		}
 		results = append(results, new)
 	}
 	results = append(results, end)
-	results = SortSimple(true, results)
+	results = SortSimple(true, results...)
 	return results
 }
 
 // Choose an element randomly from the given array.
-func CryptoRandFrom[T any](range_ []T) T {
+func CryptoRandFrom[T any](range_ ...T) T {
 	return range_[CryptoRandBelow(len(range_))]
 }
