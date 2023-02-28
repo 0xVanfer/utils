@@ -9,7 +9,7 @@ import (
 //
 // Example:
 //
-//	ConnectArray([]string{"one", "year", "old"}, "-") = "one-year-old"
+//	ConnectArray([]string{"one", "year", "old"}..., "-") = "one-year-old"
 func ConnectArray(connector string, strList ...string) string {
 	var result bytes.Buffer
 	length := len(append(strList, "aa")) - 1
@@ -54,8 +54,8 @@ func SeperateIntoArray(str string, seperateBy string) (res []string) {
 // Example:
 //
 //	ContainInArray(1,[]int{1, 2, 3}) = true
-//	ContainInArray("", []string{"1", "2", "3"}) = false
-//	ContainInArray("0", []string{"1", "2", "3"}) = false
+//	ContainInArray("", []string{"1", "2", "3"}...) = false
+//	ContainInArray("0", []string{"1", "2", "3"}...) = false
 func ContainInArray[T comparable](target T, array ...T) bool {
 	for _, t := range array {
 		if target == t {
@@ -69,8 +69,8 @@ func ContainInArray[T comparable](target T, array ...T) bool {
 //
 // Example:
 //
-//	ContainInArrayX("aa", []string{"aa", "bb", "cc"}) = true
-//	ContainInArrayX("aA", []string{"aa", "bb", "cc"}) = true
+//	ContainInArrayX("aa", []string{"aa", "bb", "cc"}...) = true
+//	ContainInArrayX("aA", []string{"aa", "bb", "cc"}...) = true
 func ContainInArrayX(target string, array ...string) bool {
 	for _, t := range array {
 		if strings.EqualFold(target, t) {
@@ -84,8 +84,8 @@ func ContainInArrayX(target string, array ...string) bool {
 //
 // Example:
 //
-//	RemoveRepetitionInArray([]string{"aa", "bb", "bb", "BB"}) = []string{"aa", "bb", "BB"}
-//	RemoveRepetitionInArray([]int{1, 2, 3, 3}) = []int{1, 2, 3}
+//	RemoveRepetitionInArray([]string{"aa", "bb", "bb", "BB"}...) = []string{"aa", "bb", "BB"}
+//	RemoveRepetitionInArray([]int{1, 2, 3, 3}...) = []int{1, 2, 3}
 func RemoveRepetitionInArray[T comparable](array ...T) []T {
 	newArray := make([]T, 0, len(array))
 	tempMap := make(map[T]int)
@@ -103,8 +103,8 @@ func RemoveRepetitionInArray[T comparable](array ...T) []T {
 //
 // Example:
 //
-//	RemoveFromArray([]string{"aa", "bb"}, "aa") = []string{"bb"}
-//	RemoveFromArray([]uint64{1}, 1) = []uint64{}
+//	RemoveFromArray("aa", []string{"aa", "bb"}...) = []string{"bb"}
+//	RemoveFromArray(1, []uint64{1}...) = []uint64{}
 func RemoveFromArray[T comparable](toRemove T, array ...T) []T {
 	newArray := make([]T, 0, len(array))
 	for _, t := range array {
