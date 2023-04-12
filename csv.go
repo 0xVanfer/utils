@@ -52,8 +52,11 @@ func WriteNewCsv(filePath string, title []string, text [][]string) error {
 }
 
 // Write to csv line by line.
-func WriteToCsv(filePath string, title []string, text []string) error {
-	if len(text) != len(title) {
+func WriteToCsv(filePath string, title []string, text ...[]string) error {
+	if len(text) == 0 {
+		return nil
+	}
+	if len(text[0]) != len(title) {
 		return errors.New("text length not match")
 	}
 	// Read the existing file.
@@ -83,7 +86,7 @@ func WriteToCsv(filePath string, title []string, text []string) error {
 			return err
 		}
 		// Write text.
-		err = csvWriter.Write(text)
+		err = csvWriter.WriteAll(text)
 		if err != nil {
 			return err
 		}
@@ -93,7 +96,7 @@ func WriteToCsv(filePath string, title []string, text []string) error {
 			return errors.New("title length not match")
 		}
 		// Write text.
-		err = csvWriter.Write(text)
+		err = csvWriter.WriteAll(text)
 		if err != nil {
 			return err
 		}
