@@ -15,6 +15,9 @@ import (
 //
 //	0 ~ length-1
 func MathRandBelow[T types.Integer](length T) int {
+	if length == 0 {
+		return 0
+	}
 	s := math_rand.NewSource(time.Now().Unix())
 	r := math_rand.New(s)
 	i := r.Intn(int(length))
@@ -27,6 +30,9 @@ func MathRandBelow[T types.Integer](length T) int {
 //
 //	0 ~ length-1
 func CryptoRandBelow[T types.Integer](length T) int {
+	if length == 0 {
+		return 0
+	}
 	n, _ := crypto_rand.Int(crypto_rand.Reader, big.NewInt(int64(length)))
 	return int(n.Int64())
 }
@@ -37,6 +43,9 @@ func CryptoRandBelow[T types.Integer](length T) int {
 //
 //	CryptoRandBetween(1, 100, 5) = []int{1, 68, 69, 78, 79, 98, 100}
 func CryptoRandBetween(start int, end int, times int) []int {
+	if end <= start {
+		return []int{}
+	}
 	insert := start
 	var results []int
 	results = append(results, insert)
