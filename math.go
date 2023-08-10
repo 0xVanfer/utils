@@ -87,3 +87,12 @@ func Mode[T types.OrderedNumber](numbers ...T) []T {
 	}
 	return SortSimple(true, res...)
 }
+
+// Get the sum.
+func Sum[T types.OrderedNumber](numbers ...T) T {
+	var res T
+	for _, num := range numbers {
+		res += num
+	}
+	return res
+}
