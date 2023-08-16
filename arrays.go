@@ -115,3 +115,24 @@ func RemoveFromArray[T comparable](toRemove T, array ...T) []T {
 	}
 	return newArray
 }
+
+// Return the AND result of two arrays.
+func ArrayAnd[T comparable](array0, array1 []T) []T {
+	newArray := make([]T, 0, Max(len(array0), len(array1)))
+	for _, t := range array0 {
+		if ContainInArray(t, array1...) {
+			newArray = append(newArray, t)
+		}
+	}
+	newArray = RemoveRepetitionInArray(newArray...)
+	return newArray
+}
+
+// Return the OR result of two arrays.
+func ArrayOr[T comparable](array0, array1 []T) []T {
+	newArray := make([]T, 0, (len(array0) + len(array1)))
+	newArray = append(newArray, array0...)
+	newArray = append(newArray, array1...)
+	newArray = RemoveRepetitionInArray(newArray...)
+	return newArray
+}
