@@ -10,7 +10,7 @@ func TestCryptoRandFrom(t *testing.T) {
 	range_ := []int{1, 2, 3, 4, 5, 6, 7}
 
 	for i := 0; i < 10; i++ {
-		fmt.Println(CryptoRandFrom(range_))
+		fmt.Println(CryptoRandFrom(range_...))
 	}
 
 	for i := 0; i < 10; i++ {

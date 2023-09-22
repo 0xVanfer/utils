@@ -96,3 +96,18 @@ func Sum[T types.OrderedNumber](numbers ...T) T {
 	}
 	return res
 }
+
+func Mean[T types.OrderedNumber](numbers ...T) float64 {
+	return types.ToFloat64(Sum(numbers...)) / float64(len(numbers))
+}
+
+func Variance[T types.OrderedNumber](numbers ...T) float64 {
+	mean := Mean(numbers...)
+
+	sumSquaredDifferences := 0.0
+	for _, value := range numbers {
+		diff := float64(value) - mean
+		sumSquaredDifferences += diff * diff
+	}
+	return sumSquaredDifferences / float64(len(numbers))
+}
