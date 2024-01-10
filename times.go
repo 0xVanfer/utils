@@ -5,20 +5,12 @@ import (
 	"time"
 )
 
-// 2022.01.01 00:00:00  1640966400
-
-// TODO: Local and UTC not correct.
-
-// The timestamp now. In seconds.
+// The timestamp now. In seconds. Local.
 func TimestampNow() int {
 	return int(time.Now().Unix())
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetTimeRangeByType(t string, location string) (start int64, end int64) {
 	switch t {
 	case "day":
@@ -44,11 +36,7 @@ func GetTimeRangeByType(t string, location string) (start int64, end int64) {
 	return
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func TimeFormat(timestamp int64, location string) string {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Unix(timestamp, 0).Format("2006-01-02 15:04:05")
@@ -57,11 +45,7 @@ func TimeFormat(timestamp int64, location string) string {
 	return ar[0] + " " + ar[1]
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func TimeFormatTime(timestamp int64, location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Unix(timestamp, 0).Format("2006-01-02 15:04:05")
@@ -69,15 +53,12 @@ func TimeFormatTime(timestamp int64, location string) time.Time {
 	return res
 }
 
+// Return the local time.
 func TimeNowString() string {
 	return time.Now().Format("2006-01-02 15:04:05")
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetTodayStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Now().Format("2006-01-02")
@@ -86,11 +67,7 @@ func GetTodayStart(location string) time.Time {
 	return t
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetWeekStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Now().Format("2006-01-02")
@@ -99,11 +76,7 @@ func GetWeekStart(location string) time.Time {
 	return time.Unix(t.Unix()-7*24*3600, 0)
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetMonthStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Now().Format("2006-01")
@@ -112,11 +85,7 @@ func GetMonthStart(location string) time.Time {
 	return t
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetYearStart(location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	timeStr := time.Now().Format("2006")
@@ -125,11 +94,7 @@ func GetYearStart(location string) time.Time {
 	return t
 }
 
-// If location is "" or "UTC", use UTC time.
-//
-// If location is "Local", use local time.
-//
-// Location can also be "America/New_York", "Asia/Shanghai", etc.
+// Deprecated.
 func GetTimeByStr(str string, location string) time.Time {
 	locationTime, _ := time.LoadLocation(location)
 	t, _ := time.ParseInLocation("2006-01-02 15:04:05", str, locationTime)
