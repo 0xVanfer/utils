@@ -142,3 +142,24 @@ func StrCamel2Underline(str string) string {
 	}
 	return result.String()
 }
+
+// Fill the string to a certain length.
+//
+// Example:
+//
+//	PadToLength("xx", 5, "-") = "xx---"
+func PadToLength(str string, length int, fillWith ...string) string {
+	fill := " "
+	if len(fillWith) == 1 {
+		fill = fillWith[0]
+	}
+
+	if len(str) >= length {
+		return str
+	}
+
+	for len(str) < length {
+		str += fill
+	}
+	return str
+}

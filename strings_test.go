@@ -49,3 +49,9 @@ func ExampleStrCamel2Underline() {
 	// a
 	// b_a_scccc_s_s
 }
+
+func ExamplePadToLength() {
+	fmt.Println(PadToLength("xx", 5, "-"))
+	// Output:
+	// xx---
+}
