@@ -14,7 +14,7 @@ func Restart(funcToRecover func()) {
 		runtime.Callers(2, pc)
 		f := runtime.FuncForPC(pc[1])
 		fmt.Println(r)
-		fmt.Println(TimeNowString(), f.Name(), "recovered from panic, will restart.")
+		fmt.Println(time.Now().UTC().Format("2006-01-02 15:04:05"), f.Name(), "recovered from panic, will restart.")
 		// At least sleep for 1 sec, in case of endless loop.
 		time.Sleep(time.Second)
 		funcToRecover()
@@ -29,7 +29,7 @@ func RestartAndSleep(funcToRecover func(), sleepTime time.Duration) {
 		runtime.Callers(2, pc)
 		f := runtime.FuncForPC(pc[1])
 		fmt.Println(r)
-		fmt.Println(TimeNowString(), f.Name(), "recovered from panic, will restart.")
+		fmt.Println(time.Now().UTC().Format("2006-01-02 15:04:05"), f.Name(), "recovered from panic, will restart.")
 		if sleepTime.Seconds() < 1 {
 			sleepTime = time.Second
 		}
