@@ -45,6 +45,9 @@ func Private2Address(key string) string {
 
 // Return checksummed ethereum address.
 func ChecksumEthereumAddress(addr string) string {
+	if len(addr) != 42 {
+		return "0x0000000000000000000000000000000000000000"
+	}
 	hex := strings.ToLower(addr)[2:]
 	d := sha3.NewLegacyKeccak256()
 	d.Write([]byte(hex))
@@ -60,6 +63,10 @@ func ChecksumEthereumAddress(addr string) string {
 		checksumed += c
 	}
 	return checksumed
+}
+
+func IsChecksummed(addr string) bool {
+	return addr == ChecksumEthereumAddress(addr)
 }
 
 type findAddr struct {
